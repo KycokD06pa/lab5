@@ -179,7 +179,8 @@ public class ManufacturerDao implements Dao<String, Manufacturer>{
         Connection connection = null;
         boolean flag = false;
         try{
-            String sqlQuery = "delete from test.Manufacturers where id=" + manufacturer.getId();
+            String sqlQuery = "delete from test.Manufacturers where name_of_manufacturer like '" + manufacturer.getName_of_manufacturer()+
+                    "' and  country like '" +manufacturer.getCountry() +"'" ;
             connection =  new ConnectionManager().getConnection();
             statement = connection.prepareStatement(sqlQuery);
             statement.executeUpdate();
